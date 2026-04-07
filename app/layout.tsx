@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Noto_Kufi_Arabic } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "@/components/theme-provider";
@@ -19,13 +19,19 @@ export const metadata: Metadata = {
     "منصة ربط قطاع الأعمال بمشاريع التخرج الأكاديمية المدعومة بالذكاء الاصطناعي.",
 };
 
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  maximumScale: 1,
+};
+
 export default function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="ar" dir="rtl" className={`${noto.variable} text-[90%]`} suppressHydrationWarning>
+    <html lang="ar" dir="rtl" className={`${noto.variable}`} suppressHydrationWarning>
       <head>
         <script
           dangerouslySetInnerHTML={{
@@ -49,7 +55,7 @@ export default function RootLayout({
           <div className="flex flex-1 flex-col pt-12">{children}</div>
           <SiteFooter />
           <ChatWidget />
-          <Toaster 
+          <Toaster
             position="bottom-center"
             toastOptions={{
               className: "font-bold border border-gray-200 bg-white text-gray-900 shadow-xl dark:border-slate-700 dark:bg-slate-800 dark:text-white",
